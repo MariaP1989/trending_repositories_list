@@ -1,0 +1,10 @@
+.Text {
+    font-weight: bolder;
+}
+
+.CenteredCol {
+    background-color: white;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    border-radius: 0.25vw;
+}
