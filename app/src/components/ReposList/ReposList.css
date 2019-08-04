@@ -2,11 +2,45 @@
     width: 20%;
 }
 
+.m--0 {
+    margin: 0;
+}
+
 .th-center {
     text-align: center;
+    margin: auto 0;
+}
+
+.th-flex {
+    padding: 0;
+    display: flex;
 }
 
 .th-text {
     font-size: 1.3em;
+    margin-bottom: 0.4vw;
 }
+
+.flex-container {
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.sort-container {
+    display: inline-block;
+    flex-direction: column;
+    align-items: center;
+    width: 1.1vw;
+    margin: 0 0.5vw;
+}
+
+.arrows-img {
+    height: 1.1vw;
+    width: 1.1vw;
+    margin: 0 0.25vw;
+}
+
 

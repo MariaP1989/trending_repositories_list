@@ -4,6 +4,8 @@ import axios from 'axios';
 import { observer } from 'mobx-react';
 
 import ItemList from './ListItem/ListItem';
+import { ReactComponent as ArrowUp } from '../../images/sort-up.svg';
+import { ReactComponent as ArrowDown } from '../../images/sort-down.svg';
 
 import './ReposList.css';
 
@@ -30,18 +32,31 @@ class ReposList extends Component {
   }
 
   render(){
+    const { store } = this.props;
     const  { list } = this.props.store;
     return (
       <div className="RepoList"> 
         <Table>
         <thead>
           <tr>
-            <th className="col-20 th-text">
-              Liczba gwiazdek
+            <th className="col-20">
+              <div className="flex-container">
+                <p className="th-center th-text">Liczba gwiazdek</p>
+                <div className="sort-container">
+                  <ArrowUp className="arrows-img" onClick={(e) => store.handleSortByStarsNumberUp(e)} />
+                  <ArrowDown className="arrows-img" onClick={(e) => store.handleSortByStarsNumberDown(e)}/>
+                </div>
+              </div>
             </th>
-            <th className="th-center th-text">Autor</th>
-            <th className="th-center th-text">URL</th>
-            <th className="th-center th-text">Opis</th>
+            <th>
+              <p className="th-center th-text">Autor</p>
+            </th>
+            <th>
+              <p className="th-center th-text">URL</p>
+            </th>
+            <th>
+              <p className="th-center th-text">Opis</p>
+            </th>
             <th></th>
           </tr>
         </thead>
