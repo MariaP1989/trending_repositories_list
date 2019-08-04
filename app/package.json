@@ -7,11 +7,13 @@
     "@svgr/webpack": "4.1.0",
     "@typescript-eslint/eslint-plugin": "1.6.0",
     "@typescript-eslint/parser": "1.6.0",
+    "axios": "^0.19.0",
     "babel-eslint": "10.0.1",
     "babel-jest": "^24.8.0",
     "babel-loader": "8.0.5",
     "babel-plugin-named-asset-import": "^0.3.2",
     "babel-preset-react-app": "^9.0.0",
+    "bootstrap": "^4.3.1",
     "camelcase": "^5.2.0",
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "css-loader": "2.1.1",
@@ -48,6 +50,7 @@
     "react-app-polyfill": "^1.0.1",
     "react-dev-utils": "^9.0.1",
     "react-dom": "^16.8.6",
+    "reactstrap": "^8.0.1",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "semver": "6.0.0",
@@ -128,9 +131,9 @@
   "babel": {
     "plugins": [
       [
-      "@babel/plugin-proposal-decorators",
+        "@babel/plugin-proposal-decorators",
         {
-          "legacy":true
+          "legacy": true
         }
       ]
     ],

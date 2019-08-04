@@ -1,0 +1,41 @@
+.tr:hover {
+    background: rgba(16,112,184,0.1)
+}
+
+.td-starts {
+    color: #ffc100;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.td-center {
+    text-align: center;
+}
+
+.td-center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mouse-ponter {
+    cursor: pointer;
+}
+  
+.avatar-img {
+    object-fit: cover;
+    border-radius: 50%;
+    height: 3.5vw;
+    height: 3.5vw;
+}
+
+.star-img {
+    height: 1.5vw;
+    height: 1.5vw;
+    margin: 0 0.75vw;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
