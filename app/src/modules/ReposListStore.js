@@ -66,4 +66,8 @@ export default class ReposListModel {
     this.filters.language = lng;
     this.fetchReposList(this.filters);
   }
+
+  @action updateFilters = (filters) => {
+    this.filters = filters;
+  }
 }

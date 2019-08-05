@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { CustomInput, ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { observer } from 'mobx-react';
 import { action, observable } from 'mobx';
+import { withCookies } from 'react-cookie';
 
 import './FiltersPanel.css';
 
@@ -29,12 +30,13 @@ const checkboxProps = {
 @observer
 class FiltersPanel extends Component {
   @observable isOpen = false;
-  @observable currentLngName = '';
+  @observable currentLngName = this.props.cookies.get('lngName') || '';
 
   @action updateLng = (e) => {
-    const { triggerFilterLng } = this.props;
+    const { triggerFilterLng, cookies } = this.props;
     this.currentLngName = e.currentTarget.getAttribute('data-name');
     triggerFilterLng(e.currentTarget.getAttribute('data-url'))
+    cookies.set('lngName', this.currentLngName)
   }
 
   @action toggle() {
@@ -97,4 +99,4 @@ class FiltersPanel extends Component {
   }
 }
 
-export default FiltersPanel;
+export default withCookies(FiltersPanel);

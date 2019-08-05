@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withCookies } from 'react-cookie';
 import { Table } from 'reactstrap';
 import { observer } from 'mobx-react';
 
@@ -12,22 +13,35 @@ import './ReposList.css';
 @observer
 class ReposList extends Component {
   componentDidMount() {
-    const { store } = this.props;
+    const { store, cookies } = this.props;
     const { filters } = this.props.store;
-    store.fetchReposList(filters);
+    const cookiesFilters = cookies.get('filters');
     store.fetchLanguagesList();
+    if (cookiesFilters && cookiesFilters !== 'undefined') {
+      store.fetchReposList(cookiesFilters);
+      store.updateFilters(cookiesFilters);
+    } else {
+      store.fetchReposList(filters);
+      cookies.set('filters', filters);
+    }
   }
 
   render(){
-    const { store } = this.props;
+    const { store, cookies } = this.props;
     const  { list, languages, filters, hasFetchError } = this.props.store;
     return (
       <div className="RepoList">
         <FiltersPanel
           currentFilters={filters}
           languagesList={languages}
-          triggerFilterSince={(e) => store.updateSinceFilters(e)}
-          triggerFilterLng={(e) => store.updateLngFilters(e)}
+          triggerFilterSince={(e) => {
+            store.updateSinceFilters(e);
+            cookies.set('filters', filters);
+          }}
+          triggerFilterLng={(e) => {
+            store.updateLngFilters(e);
+            cookies.set('filters', filters);
+          }}
         />
         <Table>
         <thead>
@@ -72,4 +86,4 @@ class ReposList extends Component {
   }
 }
 
-export default ReposList;
+export default withCookies(ReposList);
