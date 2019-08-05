@@ -1,0 +1,36 @@
+.filters-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.5vw;
+    margin-bottom: 0.5vw;
+    height: 4vw;
+    border-radius: 0.25vw;
+    border: 0.05vw solid rgba(16,112,184,0.2);
+}
+
+.filters-since, .filters-lng {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.since-checkbox {
+    margin-right: 3.5vw;
+    transform: scale(1.5);
+}
+
+.dropdown-toggle {
+    height: 3vw;
+    min-width: 200px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.dropdown-menu {
+    height: 40vw;
+    overflow-y: auto;
+}

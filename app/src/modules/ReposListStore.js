@@ -1,8 +1,10 @@
-import { observable, action } from "mobx";
+import { observable, action, runInAction } from "mobx";
+import axios from 'axios';
 
 export default class ReposListModel {
   @observable hasFetchError = false;
   @observable  list = [];
+  @observable languages = [];
   @observable filterDESC = false;
   @observable filterASC = false;
   @observable filters = {
@@ -10,12 +12,35 @@ export default class ReposListModel {
     language: ''
   }
 
-  @action setListData = (data) => {
-    this.list = data;
+  @action fetchReposList = (filters) => {
+    axios.get('https://private-anon-1cb86096e1-githubtrendingapi.apiary-proxy.com/repositories', {
+      params: {
+        since: filters.since,
+        language: filters.language,
+      }
+    }).then(response => {
+      runInAction(() => {
+        this.list = response.data;
+        this.hasFetchError = false;
+      })
+    }).catch(() => {
+      runInAction(() => {
+        this.hasFetchError = true;
+      });
+    });
   }
 
-  @action toggleError = (value) => {
-    this.hasFetchError = value;
+  @action fetchLanguagesList = () => {
+    axios.get('https://private-anon-1cb86096e1-githubtrendingapi.apiary-proxy.com/languages').then(response => {
+      runInAction(() => {
+        this.languages = response.data;
+        this.hasFetchError = false;
+      })
+    }).catch(() => {
+      runInAction(() => {
+        this.hasFetchError = true;
+      });
+    });
   }
 
   @action handleSortByStarsNumberUp = (e) => {
@@ -30,5 +55,15 @@ export default class ReposListModel {
     const arrowUp = document.querySelector('#arrowUp');
     arrowUp.style.fill = 'black';
     this.list = this.list.slice().sort((a, b) => b.stars - a.stars);
+  }
+
+  @action updateSinceFilters = (e) =>  {
+    this.filters.since = e.currentTarget.value;
+    this.fetchReposList(this.filters);
+  }
+
+  @action updateLngFilters = (lng) =>  {
+    this.filters.language = lng;
+    this.fetchReposList(this.filters);
   }
 }
