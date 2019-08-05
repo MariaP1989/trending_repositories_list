@@ -43,4 +43,15 @@
     margin: 0 0.25vw;
 }
 
+.no-data-container {
+    height: 15vw;
+    font-size: 2em;
+}
+
+.error-container {
+    height: 15vw;
+    font-size: 2em;
+    color: red;
+} 
+
 
