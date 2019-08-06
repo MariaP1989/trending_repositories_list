@@ -52,6 +52,20 @@
     height: 15vw;
     font-size: 2em;
     color: red;
-} 
+}
+
+.pending-container {
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 10vw);
+    background-color: rgba(223, 218, 205, 0.7);
+    width: 20vw;
+    height: 20vw;
+    z-index: 30;
+    border-radius: 0.25vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
 
 

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export default class ReposListModel {
   @observable hasFetchError = false;
+  @observable fetchPending = false;
   @observable  list = [];
   @observable languages = [];
   @observable filterDESC = false;
@@ -13,6 +14,7 @@ export default class ReposListModel {
   }
 
   @action fetchReposList = (filters) => {
+    this.fetchPending = true;
     axios.get('https://private-anon-1cb86096e1-githubtrendingapi.apiary-proxy.com/repositories', {
       params: {
         since: filters.since,
@@ -22,10 +24,12 @@ export default class ReposListModel {
       runInAction(() => {
         this.list = response.data;
         this.hasFetchError = false;
+        this.fetchPending = false;
       })
     }).catch(() => {
       runInAction(() => {
         this.hasFetchError = true;
+        this.fetchPending = false;
       });
     });
   }

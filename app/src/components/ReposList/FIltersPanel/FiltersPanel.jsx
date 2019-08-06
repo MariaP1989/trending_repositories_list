@@ -76,7 +76,7 @@ class FiltersPanel extends Component {
             <DropdownMenu className="dropdown-menu">
               <DropdownItem
                 data-url=''
-                data-name='Wybierz'
+                data-name='Wszystkie'
                 onClick={(e) => this.updateLng(e)}
               >
                 Wszystkie  
